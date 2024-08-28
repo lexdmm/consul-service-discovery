@@ -35,8 +35,8 @@ In the consul healthy check there is an agent on each server that locally valida
 
 ```mermaid
 graph TD;
-    Consul<<--app-A: some problem;
-    Consul-->app-B;
-    Consul-->app-C;
-    Consul-->app-D;
+    Consulx-. some problem .-xapp-A;
+    Consul<-->app-B;
+    Consul<-->app-C;
+    Consul<-->app-D;
 ```
