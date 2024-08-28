@@ -20,9 +20,21 @@ Então agora há maquinas diferentes, em zonas diferentes e preciso saber o IP e
 Pensando nesses contextos, qual a melhor forma de descobrir qual máquina disponível para acessar?
 
 ------------------
-## Using Consul Service Discovery
+## Service Discovery topics
 - Discover available machines
 - Segment machines to ensure security
 - Resolution via DNS
 - Health check
 - Knowing whether or not I have permission to access an instance
+
+## Hashicorp Consul
+For this example I'm using Consul for testing, but the tool can be used with Kubernetes as well.
+
+# Consult Centralized Service Registry
+```mermaid
+graph TD;
+    Consul-->app A;
+    Consul-->app B;
+    ConsulA-->app C;
+    Consul-->app D;
+```
