@@ -1,6 +1,6 @@
 # SERVICE DISCOVERY
 
-**ptbr**
+**en**: 
 Let's imagine a scenario of distributed applications where they communicate with each other. In these cases, I need to know which machine I'm calling.
 
 But let's imagine that one of these machines is being over-accessed, and now which machine or instance should be accessed to distribute the requests?
@@ -10,7 +10,7 @@ So now there are different machines, in different zones, and I need to know the 
 Thinking about these contexts, what's the best way to find out which machine to access?
 
 ------------------
-**en**
+**pt**: 
 Imaginando um cenário de aplicações distribuídas onde elas se comunicam entre si. Nesses casos preciso saber a maquina que estou chamando. 
 
 Mas vamos imaginar que uma dessas máquinas está sendo super acessada e agora a qual máquina ou instancia deve ser acessada para distribuir as requisições? 
