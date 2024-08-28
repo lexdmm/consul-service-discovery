@@ -29,8 +29,9 @@ Pensando nesses contextos, qual a melhor forma de descobrir qual máquina dispon
 
 ## Hashicorp Consul
 For this example I'm using Consul for testing, but the tool can be used with Kubernetes as well.
+[https://www.consul.io/](https://www.consul.io/)
 
-### Consul centralized service registry
+## Consul centralized service registry
 In the consul healthy check there is an agent on each server that locally validates the health of the instance and notifies the consul in case of problems.
 
 ```mermaid
@@ -40,3 +41,10 @@ graph TD;
     Consul<-->app-C;
     Consul<-->app-D;
 ```
+
+## Agent, client and server
+- Agent: process deamont run in cluster's node executed in client mode or server mode.
+
+- Client: Registry local services, perform and forwards the heath check.
+
+- Server: Fully serverless, maintains cluster state, logs services and validete membership.
