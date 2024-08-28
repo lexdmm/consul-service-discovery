@@ -46,3 +46,37 @@ graph TD;
 - **Agent**: process deamont run in cluster's node executed in client mode or server mode.
 - **Client**: Registry local services, perform and forwards the heath check.
 - **Server**: Fully serverless, maintains cluster state, logs services and validete membership.
+
+## RUN Consul
+
+Run docker compose
+<pre>
+docker compose up -d
+</pre>
+
+Open consul docker container 
+<pre>
+docker exec -it consulserver01 sh
+</pre>
+
+## Consul commands
+Execute consul into sh
+<pre>
+consul agent -dev
+</pre>
+
+Members consulting
+<pre>
+consul members
+</pre>
+
+Nodes consulting
+<pre>
+curl localhost:8500/v1/catalog/nodes
+</pre>
+
+DNS consulting
+* necessary install dig `apk -U add bind-tools`
+<pre>
+dig @localhost -p 8600 consulserver01.node.consul
+</pre>
