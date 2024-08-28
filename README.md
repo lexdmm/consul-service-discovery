@@ -30,7 +30,7 @@ Pensando nesses contextos, qual a melhor forma de descobrir qual máquina dispon
 ## Hashicorp Consul
 For this example I'm using Consul for testing, but the tool can be used with Kubernetes as well.
 
-# Consult Centralized Service Registry
+### Consult Centralized Service Registry
 ```mermaid
 graph TD;
     Consul-->app-A;
