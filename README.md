@@ -33,8 +33,8 @@ For this example I'm using Consul for testing, but the tool can be used with Kub
 # Consult Centralized Service Registry
 ```mermaid
 graph TD;
-    Consul-->app A;
-    Consul-->app B;
-    ConsulA-->app C;
-    Consul-->app D;
+    Consul-->app-A;
+    Consul-->app-B;
+    Consul-->app-C;
+    Consul-->app-D;
 ```
