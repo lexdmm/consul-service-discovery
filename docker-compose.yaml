@@ -1,0 +1,22 @@
+version: '3'
+
+services: 
+    consulserver01:   
+        image: consul:1.10.2
+        container_name: consulserver01
+        hostname: consulserver01
+        command: ['tail', '-f', '/dev/null'] #keeps the process running
+        volumes: 
+            - ./servers/server01:/etc/consul.d
+        ports:
+            - "8500:8500"
+
+
+    
+    consulclient01:   
+        image: consul:1.10.2
+        container_name: consulclient01
+        hostname: consulclient01
+        command: ['tail', '-f', '/dev/null']
+        volumes: 
+            - ./clients/consul01:/etc/consul.d
