@@ -43,8 +43,6 @@ graph TD;
 ```
 
 ## Agent, client and server
-- Agent: process deamont run in cluster's node executed in client mode or server mode.
-
-- Client: Registry local services, perform and forwards the heath check.
-
-- Server: Fully serverless, maintains cluster state, logs services and validete membership.
+- **Agent**: process deamont run in cluster's node executed in client mode or server mode.
+- **Client**: Registry local services, perform and forwards the heath check.
+- **Server**: Fully serverless, maintains cluster state, logs services and validete membership.
