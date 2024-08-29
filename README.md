@@ -47,36 +47,61 @@ graph TD;
 - **Client**: Registry local services, perform and forwards the heath check.
 - **Server**: Fully serverless, maintains cluster state, logs services and validete membership.
 
-## RUN Consul
+## RUN Consul on Docker
 
 Run docker compose
 <pre>
 docker compose up -d
 </pre>
 
-Open consul docker container 
+Open consul docker containers
 <pre>
-docker exec -it consulserver01 sh
+docker exec -it consul-server-01 sh
 </pre>
 
-## Consul commands
-Execute consul into sh
-<pre>
-consul agent -dev
-</pre>
-
-Members consulting
-<pre>
-consul members
-</pre>
-
+## Consul Nodes
 Nodes consulting
 <pre>
 curl localhost:8500/v1/catalog/nodes
 </pre>
 
-DNS consulting
+## Nginx consulting
+Note that I did not put nginx in docker compose. So install it manually in the client containers according to the settings in "services.json"
+
 * necessary install dig `apk -U add bind-tools`
 <pre>
-dig @localhost -p 8600 consulserver01.node.consul
+dig @localhost -p 8600 nginx.service.consul
 </pre>
+
+<pre>
+consul catalog nodes -service nginx
+</pre>
+
+<pre>
+consul catalog nodes -detail
+</pre>
+
+Meybe is necessary a relaod into server containers to nginx
+<pre>
+consul reload
+</pre>
+
+## Consul RUN Multiple Servers
+Run server in each container server
+<pre>
+consul agent -config-dir=/etc/consul.d
+</pre>
+
+Run client
+<pre>
+consul -agent -data-dir=/var/lib/consul
+</pre>
+
+## Consul dashboard
+To run consul with the dashboard and see the health of your services, run the command below in each container to start the servers.
+<pre>
+consul agent -config-dir=/etc/consul.d
+</pre>
+
+Then put the url in the address bar.
+http://localhost:8500/ui/dc1/services

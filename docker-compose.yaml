@@ -1,22 +1,63 @@
-version: '3'
+version: "3.9"
 
 services: 
-    consulserver01:   
+    # Servers
+    consul-server-01:   
         image: consul:1.10.2
-        container_name: consulserver01
-        hostname: consulserver01
+        container_name: consul-server-01
+        hostname: consul-server-01
         command: ['tail', '-f', '/dev/null'] #keeps the process running
         volumes: 
             - ./servers/server01:/etc/consul.d
         ports:
-            - "8500:8500"
+            - "8500:8500" # Consul UI
+        networks:
+            consul-network:
+                ipv4_address: 172.18.0.2
 
-
-    
-    consulclient01:   
+    consul-server-02:   
         image: consul:1.10.2
-        container_name: consulclient01
-        hostname: consulclient01
+        container_name: consul-server-02
+        hostname: consul-server-02
+        command: ['tail', '-f', '/dev/null']
+        volumes: 
+            - ./servers/server02:/etc/consul.d
+        networks:
+            consul-network:
+                ipv4_address: 172.18.0.3
+
+    consul-server-03:   
+        image: consul:1.10.2
+        container_name: consul-server-03
+        hostname: consul-server-03
+        command: ['tail', '-f', '/dev/null']
+        volumes: 
+            - ./servers/server03:/etc/consul.d
+        networks:
+            consul-network:
+                ipv4_address: 172.18.0.4
+        
+    # Clients
+    consul-client-01:   
+        image: consul:1.10.2
+        container_name: consul-client-01
+        hostname: consul-client-01
         command: ['tail', '-f', '/dev/null']
         volumes: 
             - ./clients/consul01:/etc/consul.d
+        
+    consul-client-02:   
+        image: consul:1.10.2
+        container_name: consul-client-02
+        hostname: consul-client-02
+        command: ['tail', '-f', '/dev/null']
+        volumes: 
+            - ./clients/consul02:/etc/consul.d
+
+networks:
+  consul-network:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.18.0.0/16
+         gateway: 172.18.0.1
